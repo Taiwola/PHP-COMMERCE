@@ -20,6 +20,8 @@ if (isset($_POST['delete_account'])) {
     if ($run_pending_orders_query && $run_completed_orders_query) {
         $delete_user = "DELETE FROM user_table WHERE user_id = $user_id";
         $run_user_query = mysqli_query($conn, $delete_user);
+        session_unset();
+        session_destroy();
         if ($run_user_query) {
             echo "<script>alert('Account Deleted Successfully!')</script>";
             echo "<script>window.open('../index.php', '_self')</script>";
@@ -31,6 +33,11 @@ if (isset($_POST['delete_account'])) {
         echo "<script>alert('Error Occurred! Please Try Again Later.')</script>";
         echo "<script>window.open('profile.php?delete_account', '_self')</script>";
     }
+}
+
+
+if (isset($_POST['ignore'])) {
+    echo "<script>window.open('profile.php', '_self')</script>";
 }
 ?>
 
@@ -45,13 +52,13 @@ if (isset($_POST['delete_account'])) {
 
 <body>
     <div class="container">
-        <h2 class="text-success">Delete Account</h2>
+        <h1 class="text-success m-4">Delete Account</h1>
         <form action="" method="POST">
-            <div class="form-outline my-4 text-center w-50 m-auto">
+            <div class="form-outline my-4 text-center m-auto">
                 <input type="submit" name="delete_account" class="form-control w-50 m-auto bg-danger border-0 text-light" value="Delete Account">
             </div>
-            <div class="form-outline my-4 text-center w-50 m-auto">
-                <input type="submit" name="delete_account" class="form-control w-50 m-auto bg-success border-0 text-light" value="Don't delete account">
+            <div class="form-outline my-4 text-center m-auto">
+                <input type="submit" name="ignore" class="form-control w-50 m-auto bg-success border-0 text-light" value="Don't delete account">
             </div>
         </form>
     </div>
