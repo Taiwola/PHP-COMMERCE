@@ -456,7 +456,7 @@ function get_user_order_details()
                     } else {
                         echo "<h3 class='text-success'> You have zero pending orders</h3>
                         <br>
-                        <a href='../display_all' class='btn'>Explore Products</a>
+                        <a href='../display_all.php' class='btn'>Explore Products</a>
                         ";
                     }
                 }
